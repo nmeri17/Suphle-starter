@@ -1,0 +1,19 @@
+{
+    "require": {
+        "nmeri/tilwa": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "AllModules\\": "AllModules/",
+            "AppModels\\": "AppModels/",
+            "ModuleInteractions\\": "ModuleInteractions/"
+        }
+    },
+
+    "repositories": [
+    	{
+    		"type": "path",
+	        "url": "../suphle"
+	    }
+    ]
+}
