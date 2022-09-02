@@ -5,9 +5,9 @@
 
 	require_once "../vendor/autoload.php";
 
-	echo (new ModuleWorkerAccessor(new PublishedModules))
+	echo (new ModuleWorkerAccessor(new PublishedModules, true))
 
-	->buildIdentifier()->getRequestRenderer($_GET["tilwa_path"], true)
+	->buildIdentifier()->getRequestRenderer($_GET["suphle_path"], true)
 
 	->render();
 ?>

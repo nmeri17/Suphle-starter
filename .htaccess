@@ -5,26 +5,12 @@ php_value upload_max_filesize 10M
 php_value post_max_size 11M
 
 
-# QSA = tack query string if present onto the target tilwa_path
+# QSA = tack query string if present onto the target suphle_path
 RewriteCond %{HTTP_HOST} ^(.*)
 
-RewriteRule ^([\w\/]+)$ public/index.php?tilwa_sub=%1&tilwa_path=$1 [NC,QSA,L]
-
-# I think the sub-domain part still needs review
+RewriteRule ^([\w\/]+)$ public/index.php?suphle_sub=%1&suphle_path=$1 [NC,QSA,L]
 
 # serve index
 RewriteCond %{HTTP_HOST} ^(.*)
 
-RewriteRule ^/?$ public/index.php?tilwa_sub=%1&tilwa_path=index [NC,QSA,L]
-
-
-# invalid file?
-RewriteCond %{REQUEST_FILENAME} !-f
-
-# fuck off our dirs!
-RewriteCond %{REQUEST_FILENAME} -d
-
-# extensioned requests, suck it!
-RewriteCond %{REQUEST_URI} ^(.+\.\w{3,4})$
-
-RewriteRule .? public/index.php?tilwa_path=fraudulent_tilwa [L]
+RewriteRule ^/?$ public/index.php?suphle_sub=%1&suphle_path=index [NC,QSA,L]

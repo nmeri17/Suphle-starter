@@ -8,9 +8,14 @@
 
 	use AllModules\PublishedModules;
 
-	$runner = new CliRunner (new PublishedModules, new SymfonyCli("Suphle", "v2"));
+	$runner = new CliRunner (
 
-	$runner->loadCommands();
+		new PublishedModules, new SymfonyCli("Suphle", "v2")
+	);
+
+	$runner->extractAvailableCommands()->setRootPath(__DIR__)
+
+	->funnelToClient();
 
 	$runner->awaitCommands();
 ?>

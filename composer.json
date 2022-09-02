@@ -1,7 +1,7 @@
 {
-    "require": {
-        "nmeri/tilwa": "*"
-    },
+    "name": "nmeri/suphle-starter",
+    "type": "project",
+    "description": "Setup Suphle folder structure and provide workers or entry scripts for handling incoming requests",
     "autoload": {
         "psr-4": {
             "AllModules\\": "AllModules/",
@@ -14,6 +14,19 @@
     	{
     		"type": "path",
 	        "url": "../suphle"
-	    }
-    ]
+	    },{
+            "type": "vcs",
+            "url": "https://github.com/nmeri17/QuTee"
+        }
+    ],
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "mcaskill/composer-exclude-files": true
+        },
+        "sort-packages": true
+    },
+    "require-dev": {
+        "nmeri/suphle": "*"
+    }
 }
