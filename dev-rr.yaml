@@ -5,6 +5,8 @@ server:
     # This option is required if using on_init
   #  command: "any php or script here"
   command: "php suphle-worker.php"
+  env:
+  #  - DATABASE_NAME: suphle
 
 http:
   address: 0.0.0.0:8080

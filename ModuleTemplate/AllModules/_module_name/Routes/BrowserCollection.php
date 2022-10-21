@@ -5,13 +5,13 @@
 
 	use Suphle\Response\Format\Json;
 
-	use AllModules\_module_name\Controllers\BaseController;
+	use AllModules\_module_name\Controllers\BaseCoordinator;
 
 	class BrowserCollection extends BaseCollection {
 
 		public function _handlingClass ():string {
 
-			return BaseController::class;
+			return BaseCoordinator::class;
 		}
 
 		public function _index () {

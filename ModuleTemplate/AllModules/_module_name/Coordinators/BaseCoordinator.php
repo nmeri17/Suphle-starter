@@ -1,9 +1,9 @@
 <?php
-	namespace AllModules\_module_name\Controllers;
+	namespace AllModules\_module_name\Coordinators;
 
 	use Suphle\Services\ServiceCoordinator;
 
-	class BaseController extends ServiceCoordinator {
+	class BaseCoordinator extends ServiceCoordinator {
 
 		public function handleIndex () {
 
