@@ -27,6 +27,7 @@
         "sort-packages": true
     },
     "require-dev": {
-        "nmeri/suphle": "*"
+        "nmeri/suphle": "*",
+        "wyrihaximus/json-throwable": "^4.1"
     }
 }

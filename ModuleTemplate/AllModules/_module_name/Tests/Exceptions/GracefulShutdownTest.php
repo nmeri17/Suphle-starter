@@ -11,6 +11,8 @@
 
 	use AllModules\_module_name\Meta\_module_nameDescriptor;
 
+	use Wyrihaximus\throwable_encode;
+
 	use Exception;
 
 	class GracefulShutdownTest extends InvestigateSystemCrash {
@@ -22,7 +24,7 @@
 
 		public function test_graceful_shutdown_successful () {
 
-			$exceptionDetails = json_encode(new Exception); // given
+			$exceptionDetails = throwable_encode(new Exception); // given
 
 			$renderer = $this->getContainer()->getClass(self::BRIDGE_NAME)
 

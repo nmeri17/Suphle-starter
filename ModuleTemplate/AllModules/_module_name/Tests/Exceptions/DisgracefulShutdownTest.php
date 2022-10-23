@@ -9,6 +9,8 @@
 
 	use AllModules\_module_name\Meta\_module_nameDescriptor;
 
+	use Wyrihaximus\throwable_encode;
+
 	use Exception;
 
 	class DisgracefulShutdownTest extends InvestigateSystemCrash {
@@ -68,7 +70,7 @@
 
 			$exception = new Exception;
 
-			$exceptionDetails = json_encode($exception);
+			$exceptionDetails = throwable_encode($exception);
 
 			// when
 			$response = $this->getContainer()->getClass(self::BRIDGE_NAME)
