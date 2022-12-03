@@ -1,5 +1,5 @@
 <?php
-	use Suphle\Modules\ModuleWorkerAccessor;
+	use Suphle\Server\ModuleWorkerAccessor;
 
 	use AllModules\PublishedModules;
 

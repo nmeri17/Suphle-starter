@@ -14,10 +14,7 @@
     	{
     		"type": "path",
 	        "url": "../suphle"
-	    },{
-            "type": "vcs",
-            "url": "https://github.com/nmeri17/QuTee"
-        }
+	    }
     ],
     "minimum-stability": "dev",
     "config": {

@@ -5,9 +5,9 @@
 
 	class BaseCoordinator extends ServiceCoordinator {
 
-		public function handleIndex () {
+		public function handleHello ():array {
 
-			//
+			return ["message" => "World"];
 		}
 	}
 ?>

@@ -2,20 +2,11 @@
 <?php
 	require __DIR__.'/vendor/autoload.php';
 
-	use Suphle\Console\CliRunner;
-
-	use Suphle\Adapters\Console\SymfonyCli;
+	use Suphle\Console\CliRunnerAccessor;
 
 	use AllModules\PublishedModules;
 
-	$runner = new CliRunner (
+	(new CliRunnerAccessor(new PublishedModules))
 
-		new PublishedModules, new SymfonyCli("Suphle", "v2")
-	);
-
-	$runner->extractAvailableCommands()->setRootPath(__DIR__)
-
-	->funnelToClient();
-
-	$runner->awaitCommands();
+	->forwardCommandsToRunner(__DIR__);
 ?>

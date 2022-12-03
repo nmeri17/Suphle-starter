@@ -5,7 +5,7 @@
 
 	use Suphle\Response\Format\Json;
 
-	use AllModules\_module_name\Controllers\BaseCoordinator;
+	use AllModules\_module_name\Coordinators\BaseCoordinator;
 
 	class BrowserCollection extends BaseCollection {
 
@@ -14,9 +14,9 @@
 			return BaseCoordinator::class;
 		}
 
-		public function _index () {
+		public function HELLO () {
 
-			$this->_get(new Json("handleIndex"));
+			$this->_get(new Json("handleHello"));
 		}
 	}
 ?>
