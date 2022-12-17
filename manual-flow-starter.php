@@ -16,7 +16,7 @@
 
 	->buildIdentifier();
 
-	$handlerIdentifier->firstContainer()->getClass(OuterFlowWrapper::class);
+	$handlerIdentifier->firstContainer()->getClass(OuterFlowWrapper::class); // should trigger queue server setup
 
 	$accessor->getQueueWorker()->processTasks();
 ?>

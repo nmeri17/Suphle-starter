@@ -16,7 +16,9 @@
 
 		public function test_initial_path_is_accessible () {
 
-			$this->get("/hello") // when
+			$prefix = strtolower(_module_name);
+
+			$this->get("/$prefix/hello") // when
 
 			// then
 			->assertOk()->assertJson(["message" => "World"]);

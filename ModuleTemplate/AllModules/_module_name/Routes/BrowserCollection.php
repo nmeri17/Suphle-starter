@@ -14,6 +14,11 @@
 			return BaseCoordinator::class;
 		}
 
+		public function _prefixCurrent ():string {
+
+			return strtoupper(_module_name); // assumes no strings/hyphens/underscore is expected
+		}
+
 		public function HELLO () {
 
 			$this->_get(new Json("handleHello"));

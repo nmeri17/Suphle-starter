@@ -23,8 +23,13 @@
         },
         "sort-packages": true
     },
+    "require": {
+        "nmeri/suphle": "*"
+    },
     "require-dev": {
-        "nmeri/suphle": "*",
-        "wyrihaximus/json-throwable": "^4.1"
+        "wyrihaximus/json-throwable": "^4.1",
+        "fakerphp/faker": "^1.19",
+        "phpunit/phpunit": "^8.5",
+        "vimeo/psalm": "*"
     }
 }
