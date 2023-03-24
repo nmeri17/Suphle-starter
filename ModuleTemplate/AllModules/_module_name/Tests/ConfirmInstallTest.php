@@ -7,7 +7,7 @@
 
 	use AllModules\_module_name\Meta\_module_nameDescriptor;
 
-	class ConfirmInstall extends ModuleLevelTest {
+	class ConfirmInstallTest extends ModuleLevelTest {
 
 		protected function getModules ():array {
 
@@ -16,7 +16,7 @@
 
 		public function test_initial_path_is_accessible () {
 
-			$prefix = strtolower(_module_name);
+			$prefix = strtolower("_module_name");
 
 			$this->get("/$prefix/hello") // when
 
