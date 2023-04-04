@@ -1,5 +1,5 @@
 <?php
-	namespace AllModules\_module_name;
+	namespace AllModules\_module_name\Meta;
 
 	use ModuleInteractions\_module_name;
 
