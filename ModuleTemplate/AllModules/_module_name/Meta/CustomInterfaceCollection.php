@@ -3,9 +3,11 @@
 
 	use Suphle\Hydration\Structures\BaseInterfaceCollection;
 
-	use Suphle\Contracts\Config\Router;
+	use Suphle\Contracts\{Config\Router, Auth\UserContract};
 
 	use AllModules\_module_name\Config\RouterMock;
+
+	use AppModels\User as EloquentUser; // hard-coded cuz different processes control module cloning and component ejection
 
 	use ModuleInteractions\_module_name;
 
@@ -23,7 +25,9 @@
 
 			return array_merge(parent::simpleBinds(), [
 
-				_module_name::class => ModuleApi::class
+				_module_name::class => ModuleApi::class,
+
+				UserContract::class => EloquentUser::class
 			]);
 		}
 	}

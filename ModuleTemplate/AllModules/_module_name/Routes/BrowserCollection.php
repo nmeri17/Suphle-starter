@@ -12,7 +12,7 @@
 
 		public function _prefixCurrent ():string {
 
-			return strtoupper(_module_name); // assumes no strings/hyphens/underscore is expected
+			return strtoupper("_module_name"); // assumes no strings/hyphens/underscore is expected
 		}
 
 		public function HELLO () {

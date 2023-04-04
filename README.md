@@ -1,9 +1,3 @@
-# Suphle-starter
-For initializing a [Suphle](https://github.com/nmeri17/suphle) project
+## Introduction
 
-<!--
-`composer create-project suphle-starter awesome`
-
-`cd awesome`
-
-`suphle create-module Babes`*-->
+For initializing a [Suphle](https://github.com/nmeri17/suphle) project> Installation instructions are on the [documentation](https://suphle.com/docs/v1/quick-start).

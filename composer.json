@@ -9,27 +9,16 @@
             "ModuleInteractions\\": "ModuleInteractions/"
         }
     },
-
-    "repositories": [
-    	{
-    		"type": "path",
-	        "url": "../suphle"
-	    }
-    ],
-    "minimum-stability": "dev",
     "config": {
-        "allow-plugins": {
-            "mcaskill/composer-exclude-files": true
-        },
         "sort-packages": true
     },
     "require": {
         "nmeri/suphle": "*"
     },
-    "require-dev": {
-        "wyrihaximus/json-throwable": "^4.1",
-        "fakerphp/faker": "^1.19",
-        "phpunit/phpunit": "^8.5",
-        "vimeo/psalm": "*"
+    "require-dev": {},
+    "scripts": {
+        "post-create-project-cmd": [
+            "rr get-binary"
+        ]
     }
 }
