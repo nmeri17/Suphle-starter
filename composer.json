@@ -18,6 +18,8 @@
     "require-dev": {},
     "scripts": {
         "post-create-project-cmd": [
+            "php -r \"chdir(__DIR__. '/vendor/bin');\"",
+
             "rr get-binary"
         ]
     }
