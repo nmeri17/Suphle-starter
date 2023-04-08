@@ -18,7 +18,7 @@
     "require-dev": {},
     "scripts": {
         "post-create-project-cmd": [
-            "rr get-binary --location=vendor/bin"
+            "rr get-binary --location=./vendor/bin"
         ]
     }
 }
