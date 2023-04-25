@@ -1,22 +1,22 @@
 <?php
-	use Suphle\Server\ModuleWorkerAccessor;
 
-	use Suphle\Flows\OuterFlowWrapper;
+use Suphle\Server\ModuleWorkerAccessor;
 
-	use AllModules\PublishedModules;
+use Suphle\Flows\OuterFlowWrapper;
 
-	require_once "vendor/autoload.php";
+use AllModules\PublishedModules;
 
-	/**
-	 * This is for use when handling traditional requests i.e. without RR
-	*/
-	$handlerIdentifier = new PublishedModules;
+require_once "vendor/autoload.php";
 
-	$accessor = (new ModuleWorkerAccessor($handlerIdentifier, false))
+/**
+ * This is for use when handling traditional requests i.e. without RR
+*/
+$handlerIdentifier = new PublishedModules();
 
-	->buildIdentifier();
+$accessor = (new ModuleWorkerAccessor($handlerIdentifier, false))
 
-	$handlerIdentifier->firstContainer()->getClass(OuterFlowWrapper::class); // should trigger queue server setup
+->buildIdentifier();
 
-	$accessor->getQueueWorker()->processTasks();
-?>
+$handlerIdentifier->firstContainer()->getClass(OuterFlowWrapper::class); // should trigger queue server setup
+
+$accessor->getQueueWorker()->processTasks();

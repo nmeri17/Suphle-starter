@@ -1,26 +1,28 @@
 <?php
-	namespace AllModules\_module_name\Tests\Exceptions;
 
-	use Suphle\Hydration\Container;
+namespace AllModules\_module_name\Tests\Exceptions;
 
-	use Suphle\Contracts\Modules\DescriptorInterface;
+use Suphle\Hydration\Container;
 
-	use Suphle\Testing\{TestTypes\InvestigateSystemCrash, Utilities\PingHttpServer};
+use Suphle\Contracts\Modules\DescriptorInterface;
 
-	use AllModules\_module_name\Meta\_module_nameDescriptor;
+use Suphle\Testing\{TestTypes\InvestigateSystemCrash, Utilities\PingHttpServer};
 
-	class ServerBuildTest extends InvestigateSystemCrash {
+use AllModules\_module_name\Meta\_module_nameDescriptor;
 
-		use PingHttpServer;
+class ServerBuildTest extends InvestigateSystemCrash
+{
+    use PingHttpServer;
 
-		protected function getModule ():DescriptorInterface {
+    protected function getModule(): DescriptorInterface
+    {
 
-			return new _module_nameDescriptor(new Container);
-		}
+        return new _module_nameDescriptor(new Container());
+    }
 
-		public function test_server_builds_successfully () {
+    public function test_server_builds_successfully()
+    {
 
-			$this->assertServerBuilds();
-		}
-	}
-?>
+        $this->assertServerBuilds();
+    }
+}

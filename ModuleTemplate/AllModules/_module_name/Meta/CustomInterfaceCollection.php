@@ -1,34 +1,36 @@
 <?php
-	namespace AllModules\_module_name\Meta;
 
-	use Suphle\Hydration\Structures\BaseInterfaceCollection;
+namespace AllModules\_module_name\Meta;
 
-	use Suphle\Contracts\{Config\Router, Auth\UserContract};
+use Suphle\Hydration\Structures\BaseInterfaceCollection;
 
-	use AllModules\_module_name\Config\RouterMock;
+use Suphle\Contracts\{Config\Router, Auth\UserContract};
 
-	use AppModels\User as EloquentUser; // hard-coded cuz different processes control module cloning and component ejection
+use AllModules\_module_name\Config\RouterMock;
 
-	use ModuleInteractions\_module_name;
+use AppModels\User as EloquentUser; // hard-coded cuz different processes control module cloning and component ejection
 
-	class CustomInterfaceCollection extends BaseInterfaceCollection {
+use ModuleInteractions\_module_name;
 
-		public function getConfigs ():array {
-			
-			return array_merge(parent::getConfigs(), [
+class CustomInterfaceCollection extends BaseInterfaceCollection
+{
+    public function getConfigs(): array
+    {
 
-				Router::class => RouterMock::class
-			]);
-		}
+        return array_merge(parent::getConfigs(), [
 
-		public function simpleBinds ():array {
+            Router::class => RouterMock::class
+        ]);
+    }
 
-			return array_merge(parent::simpleBinds(), [
+    public function simpleBinds(): array
+    {
 
-				_module_name::class => ModuleApi::class,
+        return array_merge(parent::simpleBinds(), [
 
-				UserContract::class => EloquentUser::class
-			]);
-		}
-	}
-?>
+            _module_name::class => ModuleApi::class,
+
+            UserContract::class => EloquentUser::class
+        ]);
+    }
+}

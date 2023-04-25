@@ -1,8 +1,8 @@
 <?php
-	namespace ModuleInteractions;
 
-	interface _module_name {
+namespace ModuleInteractions;
 
-		//
-	}
-?>
+interface _module_name
+{
+    //
+}

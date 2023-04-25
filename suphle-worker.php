@@ -1,17 +1,17 @@
 <?php
-	use Suphle\Server\ModuleWorkerAccessor;
 
-	use Spiral\RoadRunner\{Environment, Environment\Mode};
+use Suphle\Server\ModuleWorkerAccessor;
 
-	use AllModules\PublishedModules;
+use Spiral\RoadRunner\{Environment, Environment\Mode};
 
-	require_once "vendor/autoload.php";
+use AllModules\PublishedModules;
 
-	$publishedModules = new PublishedModules;
+require_once "vendor/autoload.php";
 
-	$isHttpMode = Environment::fromGlobals()->getMode() === Mode::MODE_HTTP;
+$publishedModules = new PublishedModules();
 
-	(new ModuleWorkerAccessor($publishedModules, $isHttpMode))
+$isHttpMode = Environment::fromGlobals()->getMode() === Mode::MODE_HTTP;
 
-	->safeSetupWorker();
-?>
+(new ModuleWorkerAccessor($publishedModules, $isHttpMode))
+
+->safeSetupWorker();

@@ -1,13 +1,14 @@
 <?php
-	namespace AllModules\_module_name\Coordinators;
 
-	use Suphle\Services\ServiceCoordinator;
+namespace AllModules\_module_name\Coordinators;
 
-	class BaseCoordinator extends ServiceCoordinator {
+use Suphle\Services\ServiceCoordinator;
 
-		public function handleHello ():array {
+class BaseCoordinator extends ServiceCoordinator
+{
+    public function handleHello(): array
+    {
 
-			return ["message" => "World"];
-		}
-	}
-?>
+        return ["message" => "World"];
+    }
+}

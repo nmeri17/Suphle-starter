@@ -1,91 +1,94 @@
 <?php
-	namespace AllModules\_module_name\Tests\Exceptions;
 
-	use Suphle\Contracts\{Modules\DescriptorInterface, Config\ExceptionInterceptor};
+namespace AllModules\_module_name\Tests\Exceptions;
 
-	use Suphle\Hydration\Container;
+use Suphle\Contracts\{Modules\DescriptorInterface, Config\ExceptionInterceptor};
 
-	use Suphle\Testing\{TestTypes\InvestigateSystemCrash, Condiments\FilesystemCleaner};
+use Suphle\Hydration\Container;
 
-	use AllModules\_module_name\Meta\_module_nameDescriptor;
+use Suphle\Testing\{TestTypes\InvestigateSystemCrash, Condiments\FilesystemCleaner};
 
-	use Exception;
+use AllModules\_module_name\Meta\_module_nameDescriptor;
 
-	class DisgracefulShutdownTest extends InvestigateSystemCrash {
+use Exception;
 
-		use FilesystemCleaner;
+class DisgracefulShutdownTest extends InvestigateSystemCrash
+{
+    use FilesystemCleaner;
 
-		private $exceptionConfig;
+    private $exceptionConfig;
 
-		public function getModule ():DescriptorInterface {
+    public function getModule(): DescriptorInterface
+    {
 
-			return new _module_nameDescriptor(new Container);
-		}
+        return new _module_nameDescriptor(new Container());
+    }
 
-		protected function stubExceptionBridge (array $stubMethods = [], array $mockMethods = []):void {
+    protected function stubExceptionBridge(array $stubMethods = [], array $mockMethods = []): void
+    {
 
-			$parameters = $this->getContainer()->getMethodParameters(
+        $parameters = $this->getContainer()->getMethodParameters(
+            Container::CLASS_CONSTRUCTOR,
+            self::BRIDGE_NAME
+        );
 
-				Container::CLASS_CONSTRUCTOR, self::BRIDGE_NAME
-			);
+        $this->exceptionConfig = $parameters["config"] = $this->stubExceptionConfig();
 
-			$this->exceptionConfig = $parameters["config"] = $this->stubExceptionConfig();
+        $defaultStubs = [
 
-			$defaultStubs = [
+            "writeStatusCode" => null
+        ];
 
-				"writeStatusCode" => null
-			];
+        $this->massProvide([
 
-			$this->massProvide([
+            self::BRIDGE_NAME => $this->replaceConstructorArguments(
+                self::BRIDGE_NAME,
+                $parameters,
+                array_merge($defaultStubs, $stubMethods), // overridding the method since parent can only make provision for merge and not unset (of disgracefulShutdown stub)
 
-				self::BRIDGE_NAME => $this->replaceConstructorArguments(
+                $mockMethods
+            )
+        ]);
+    }
 
-					self::BRIDGE_NAME, $parameters,
+    protected function stubExceptionConfig(): ExceptionInterceptor
+    {
 
-					array_merge($defaultStubs, $stubMethods), // overridding the method since parent can only make provision for merge and not unset (of disgracefulShutdown stub)
+        return $this->positiveDouble(ExceptionInterceptor::class, [
 
-					$mockMethods
-				)
-			]);
-		}
+            "shutdownLog" => "error-log.txt",
 
-		protected function stubExceptionConfig ():ExceptionInterceptor {
+            "shutdownText" => "Bye World"
+        ]);
+    }
 
-			return $this->positiveDouble(ExceptionInterceptor::class, [
+    public function test_disgraceful_shutdown_successful()
+    {
 
-				"shutdownLog" => "error-log.txt",
+        // given
+        $logPath = $this->exceptionConfig->shutdownLog();
 
-				"shutdownText" => "Bye World"
-			]);
-		}
+        $this->assertEmptyDirectory($logPath);
 
-		public function test_disgraceful_shutdown_successful () {
+        $exception = new Exception();
 
-			// given
-			$logPath = $this->exceptionConfig->shutdownLog();
+        $exceptionDetails = \Wyrihaximus\throwable_json_encode($exception);
 
-			$this->assertEmptyDirectory($logPath);
+        // when
+        $response = $this->getContainer()->getClass(self::BRIDGE_NAME)
 
-			$exception = new Exception;
+        ->disgracefulShutdown($exceptionDetails, $exception);
 
-			$exceptionDetails = \Wyrihaximus\throwable_json_encode($exception);
+        // then
+        $this->assertFileExists($logPath);
 
-			// when
-			$response = $this->getContainer()->getClass(self::BRIDGE_NAME)
+        $this->assertStringContainsStringIgnoringCase($exceptionDetails);
 
-			->disgracefulShutdown($exceptionDetails, $exception);
+        $this->assertNotEmptyDirectory($logPath, true);
 
-			// then
-			$this->assertFileExists($logPath);
-
-			$this->assertStringContainsStringIgnoringCase($exceptionDetails);
-
-			$this->assertNotEmptyDirectory($logPath, true);
-
-			$this->assertSame(
-
-				$response, $this->exceptionConfig->shutdownText()
-			);
-		}
-	}
-?>
+        $this->assertSame(
+            $response,
+            $this->exceptionConfig->shutdownText()
+        );
+    }
+}

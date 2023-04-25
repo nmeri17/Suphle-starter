@@ -1,37 +1,38 @@
 <?php
-	namespace AllModules\_module_name\Tests\Exceptions;
 
-	use Suphle\Contracts\Modules\DescriptorInterface;
+namespace AllModules\_module_name\Tests\Exceptions;
 
-	use Suphle\Hydration\Container;
+use Suphle\Contracts\Modules\DescriptorInterface;
 
-	use Suphle\Exception\Diffusers\GenericDiffuser;
+use Suphle\Hydration\Container;
 
-	use Suphle\Testing\TestTypes\InvestigateSystemCrash;
+use Suphle\Exception\Diffusers\GenericDiffuser;
 
-	use AllModules\_module_name\Meta\_module_nameDescriptor;
+use Suphle\Testing\TestTypes\InvestigateSystemCrash;
 
-	use Exception;
+use AllModules\_module_name\Meta\_module_nameDescriptor;
 
-	class GracefulShutdownTest extends InvestigateSystemCrash {
+use Exception;
 
-		public function getModule ():DescriptorInterface {
+class GracefulShutdownTest extends InvestigateSystemCrash
+{
+    public function getModule(): DescriptorInterface
+    {
 
-			return new _module_nameDescriptor(new Container);
-		}
+        return new _module_nameDescriptor(new Container());
+    }
 
-		public function test_graceful_shutdown_successful () {
+    public function test_graceful_shutdown_successful()
+    {
 
-			$exceptionDetails = \Wyrihaximus\throwable_json_encode(new Exception); // given
+        $exceptionDetails = \Wyrihaximus\throwable_json_encode(new Exception()); // given
 
-			$renderer = $this->getContainer()->getClass(self::BRIDGE_NAME)
+        $renderer = $this->getContainer()->getClass(self::BRIDGE_NAME)
 
-			->gracefulShutdown($exceptionDetails); // when
+        ->gracefulShutdown($exceptionDetails); // when
 
-			$this->assertTrue(
-
-				$renderer->matchesHandler(GenericDiffuser::CONTROLLER_ACTION)
-			); // then
-		}
-	}
-?>
+        $this->assertTrue(
+            $renderer->matchesHandler(GenericDiffuser::CONTROLLER_ACTION)
+        ); // then
+    }
+}

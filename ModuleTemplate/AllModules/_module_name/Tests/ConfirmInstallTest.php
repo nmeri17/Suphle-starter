@@ -1,27 +1,29 @@
 <?php
-	namespace AllModules\_module_name\Tests;
 
-	use Suphle\Hydration\Container;
+namespace AllModules\_module_name\Tests;
 
-	use Suphle\Testing\TestTypes\ModuleLevelTest;
+use Suphle\Hydration\Container;
 
-	use AllModules\_module_name\Meta\_module_nameDescriptor;
+use Suphle\Testing\TestTypes\ModuleLevelTest;
 
-	class ConfirmInstallTest extends ModuleLevelTest {
+use AllModules\_module_name\Meta\_module_nameDescriptor;
 
-		protected function getModules ():array {
+class ConfirmInstallTest extends ModuleLevelTest
+{
+    protected function getModules(): array
+    {
 
-			return [new _module_nameDescriptor(new Container)];
-		}
+        return [new _module_nameDescriptor(new Container())];
+    }
 
-		public function test_initial_path_is_accessible () {
+    public function test_initial_path_is_accessible()
+    {
 
-			$prefix = strtolower("_module_name");
+        $prefix = strtolower("_module_name");
 
-			$this->get("/$prefix/hello") // when
+        $this->get("/$prefix/hello") // when
 
-			// then
-			->assertOk()->assertJson(["message" => "World"]);
-		}
-	}
-?>
+        // then
+        ->assertOk()->assertJson(["message" => "World"]);
+    }
+}

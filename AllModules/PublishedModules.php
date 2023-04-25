@@ -1,15 +1,16 @@
 <?php
-	namespace AllModules;
 
-	use Suphle\Modules\ModuleHandlerIdentifier;
+namespace AllModules;
 
-	use Suphle\Hydration\Container;
+use Suphle\Modules\ModuleHandlerIdentifier;
 
-	class PublishedModules extends ModuleHandlerIdentifier {
-		
-		public function getModules ():array {
+use Suphle\Hydration\Container;
 
-			return [];
-		}
-	}
-?>
+class PublishedModules extends ModuleHandlerIdentifier
+{
+    public function getModules(): array
+    {
+
+        return [];
+    }
+}

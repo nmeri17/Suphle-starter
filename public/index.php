@@ -1,13 +1,13 @@
 <?php
-	use Suphle\Server\ModuleWorkerAccessor;
 
-	use AllModules\PublishedModules;
+use Suphle\Server\ModuleWorkerAccessor;
 
-	require_once "../vendor/autoload.php";
+use AllModules\PublishedModules;
 
-	echo (new ModuleWorkerAccessor(new PublishedModules, true))
+require_once "../vendor/autoload.php";
 
-	->buildIdentifier()->getRequestRenderer($_GET["suphle_path"], true)
+echo (new ModuleWorkerAccessor(new PublishedModules(), true))
 
-	->render();
-?>
+->buildIdentifier()->getRequestRenderer($_GET["suphle_path"], true)
+
+->render();

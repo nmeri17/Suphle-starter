@@ -1,23 +1,25 @@
 <?php
-	namespace AllModules\_module_name\Routes;
 
-	use Suphle\Routing\{BaseCollection, Decorators\HandlingCoordinator};
+namespace AllModules\_module_name\Routes;
 
-	use Suphle\Response\Format\Json;
+use Suphle\Routing\{BaseCollection, Decorators\HandlingCoordinator};
 
-	use AllModules\_module_name\Coordinators\BaseCoordinator;
+use Suphle\Response\Format\Json;
 
-	#[HandlingCoordinator(BaseCoordinator::class)]
-	class BrowserCollection extends BaseCollection {
+use AllModules\_module_name\Coordinators\BaseCoordinator;
 
-		public function _prefixCurrent ():string {
+#[HandlingCoordinator(BaseCoordinator::class)]
+class BrowserCollection extends BaseCollection
+{
+    public function _prefixCurrent(): string
+    {
 
-			return strtoupper("_module_name"); // assumes no strings/hyphens/underscore is expected
-		}
+        return strtoupper("_module_name"); // assumes no strings/hyphens/underscore is expected
+    }
 
-		public function HELLO () {
+    public function HELLO()
+    {
 
-			$this->_get(new Json("handleHello"));
-		}
-	}
-?>
+        $this->_get(new Json("handleHello"));
+    }
+}

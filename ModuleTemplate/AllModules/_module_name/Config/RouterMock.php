@@ -1,15 +1,16 @@
 <?php
-	namespace AllModules\_module_name\Config;
 
-	use Suphle\Config\Router;
+namespace AllModules\_module_name\Config;
 
-	use AllModules\_module_name\Routes\BrowserCollection;
+use Suphle\Config\Router;
 
-	class RouterMock extends Router {
+use AllModules\_module_name\Routes\BrowserCollection;
 
-		public function browserEntryRoute ():?string {
+class RouterMock extends Router
+{
+    public function browserEntryRoute(): ?string
+    {
 
-			return BrowserCollection::class;
-		}
-	}
-?>
+        return BrowserCollection::class;
+    }
+}

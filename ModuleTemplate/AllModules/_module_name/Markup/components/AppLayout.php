@@ -1,18 +1,20 @@
 <?php
-	namespace AllModules\_module_name\Markup\Components;
 
-	use Illuminate\View\Component;
+namespace AllModules\_module_name\Markup\Components;
 
-	class AppLayouts extends Component {
+use Illuminate\View\Component;
 
-		public function __construct ($pageTitle, $scripts) {
+class AppLayouts extends Component
+{
+    public function __construct($pageTitle, $scripts)
+    {
 
-			//
-		}
+        //
+    }
 
-		public function render () {
+    public function render()
+    {
 
-			return view("layouts.app");
-		}
-	}
-?>
+        return view("layouts.app");
+    }
+}
