@@ -20,6 +20,6 @@ class BrowserCollection extends BaseCollection
     public function HELLO()
     {
 
-        $this->_get(new Json("handleHello"));
+        $this->_httpGet(new Json("handleHello"));
     }
 }
