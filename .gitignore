@@ -4,3 +4,4 @@
 
 # hidden for installs to always request fresh copies of the dependencies instead of binding to versions cached in composer.lock and requiring an update before fetching
 composer.lock
+rr-queues.db
